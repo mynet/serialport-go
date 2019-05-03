@@ -28,7 +28,9 @@ func main() {
     fmt.Println("Connected to " + string(port))
 
     buf := make([]byte, 128)
-    for {
+    t1 := time.NewTicker(time.Millisecond * 500)
+    for t := range t1.C {
+        fmt.Println("Ticker start @ ", t)
         n, err := s.Read(buf)
         if err != nil {
             log.Fatal(err)
@@ -48,6 +50,5 @@ func main() {
                 return
             }
         }
-        time.Sleep(500 * time.Millisecond)
     }
 }
