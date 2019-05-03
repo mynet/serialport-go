@@ -9,7 +9,7 @@ import (
     "fmt"
     "strings"
     "github.com/tarm/serial"
-    "github.com/gorilla/websocket"
+    // "github.com/gorilla/websocket"
 )
 
 func main() {
@@ -39,16 +39,17 @@ func main() {
         log.Printf("%q", buf[:n])
         if r.MatchString(str) {
             matched_string := r.FindString(str)
-            websocket_connection, _, err := websocket.DefaultDialer.Dial("ws://127.0.0.1:8899/serialport", nil)
-            if err != nil {
-                log.Fatal("dial:", err)
-            }
-            defer websocket_connection.Close()
-            err = websocket_connection.WriteMessage(websocket.TextMessage, []byte(matched_string))
-            if err != nil {
-                log.Println(err)
-                return
-            }
+            fmt.Println(matched_string)
+            // websocket_connection, _, err := websocket.DefaultDialer.Dial("ws://127.0.0.1:8899/serialport", nil)
+            // if err != nil {
+            //     log.Fatal("dial:", err)
+            // }
+            // defer websocket_connection.Close()
+            // err = websocket_connection.WriteMessage(websocket.TextMessage, []byte(matched_string))
+            // if err != nil {
+            //     log.Println(err)
+            //     return
+            // }
         }
     }
 }
