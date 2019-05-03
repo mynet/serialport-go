@@ -19,7 +19,6 @@ func main() {
     b, err := ioutil.ReadFile("port.txt") // just pass the file name
     if err != nil {
         fmt.Println(err)
-        return
     }
 
     port := string(b)
