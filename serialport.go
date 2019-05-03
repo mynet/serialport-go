@@ -19,6 +19,7 @@ func main() {
     reader := bufio.NewReader(os.Stdin)
     port, _ := reader.ReadString('\n')
     port = strings.TrimSuffix(port, "\n")
+    port = strings.TrimSuffix(port, "\r")
     fmt.Println("Connecting to " + string(port))
     serialport_config := &serial.Config{Name: port, Baud: 9600}
     s, err := serial.OpenPort(serialport_config)
